@@ -12,15 +12,16 @@ public class XmlJettyServer {
         Server server = new Server(8080);
 
         WebAppContext context = new WebAppContext();
-        context.setContextPath("/myapp");
+        context.setContextPath("/");
         //----------------------------------------
         String war=context.getWar();
+        war="src/main/webapp";
         String path=Resource.newSystemResource(".").getFile().getParentFile().getParent();
         path=path+"/"+war;
         //手动设置BaseResource是为了解决项目在idea中不是顶级项目导致的问题
         context.setBaseResource(Resource.newResource((new File(path)).toURI().toURL()));
         //----------------------------------------
-
+        context.setClassLoader(Thread.currentThread().getContextClassLoader());
         //解决请求的操作无法在使用用户映射区域打开的文件上执行。
        // context.setInitParameter("org.eclipse.jetty.servlet.Default.useFileMappedBuffer","false");
         // ====================
