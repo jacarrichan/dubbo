@@ -16,11 +16,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
 		<groupId>com.alibaba</groupId>
-		<artifactId>opensesame</artifactId>
-		<version>2.0</version>
-	</parent>
 	<artifactId>dubbo-parent</artifactId>
 	<version>2.5.3</version>
 	<packaging>pom</packaging>
@@ -104,7 +100,8 @@
 		<thrift_version>0.8.0</thrift_version>
 		<jfreechart_version>1.0.13</jfreechart_version>
 		<hessian_version>4.0.7</hessian_version>
-		<servlet_version>2.5</servlet_version>
+		<servlet_version>3.0-alpha-1</servlet_version>
+		<javax.servlet_version>3.1.0</javax.servlet_version>
 		<jetty_version>6.1.26</jetty_version>
 		<validation_version>1.0.0.GA</validation_version>
 		<hibernate_validator_version>4.2.0.Final</hibernate_validator_version>
@@ -112,7 +109,8 @@
 		<sca_version>2.0-M5.1</sca_version>
 		<guice_version>3.0</guice_version>
 		<cglib_version>2.2</cglib_version>
-		<webx_version>3.0.8</webx_version>
+		<webx_version>3.1.6</webx_version>
+		<velocity_version>1.7</velocity_version>
 		<!-- Log libs -->
 		<slf4j_version>1.6.2</slf4j_version>
 		<jcl_version>1.1</jcl_version>
@@ -245,6 +243,11 @@
 				<version>${servlet_version}</version>
 			</dependency>
 			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${javax.servlet_version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty</artifactId>
 				<version>${jetty_version}</version>
@@ -284,6 +287,11 @@
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j_version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity</artifactId>
+				<version>${velocity_version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -458,18 +466,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>opensesame.releases</id>
-			<url>http://code.alibabatech.com/mvn/releases</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 	<issueManagement>
 		<system>jira</system>
 		<url>http://code.alibabatech.com/jira/browse/DUBBO</url>
